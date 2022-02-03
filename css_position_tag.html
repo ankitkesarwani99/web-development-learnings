@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: red;
+            height: 340px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 5px solid grey;
+            display: inline-block;
+        }
+
+        #box3 {
+            /* position- relative,absolute,fixed,sticky */
+            /* relative: it means relative to its position 
+            position: relative;
+            top: 30px;
+            left: 30px;
+            */
+            /* absolute: it means relative to its parrent element 
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            */
+
+            /* fixed: it positions the element relative to the browser window */
+            position: sticky;
+            top: 30px;
+            left: 30px;
+
+            /* sticky
+            position: sticky;
+            top: 30px;
+            left: 30px;
+            */
+            /*
+            Fixed and sticky are both similar, but 
+            If you make a  particular element inside a container as fixed, 
+            then irrespective of container height, as we scroll, 
+            the element stays at the same position till you scroll to end of web page.
+            If you make an element as sticky and if its inside a container, 
+            then as you scroll, the element will be in the same position until the container height. 
+            While scrolling, if the container is also scrolled down, then the sticky element in the container will also move top with container.
+
+            i.e., sticky will be fixed only till the end of the container, But fixed will be fixed until the end of web page.
+
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+    </div>
+    <div style="height: 6000px;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis architecto obcaecati rerum temporibus
+            vitae eius, tempore officiis harum corrupti vel, quas nesciunt possimus! Ea quibusdam odit velit placeat.
+            Veritatis, sed.
+            Ab cupiditate, quod animi magni exercitationem ea odio iusto commodi voluptates nemo, tenetur, maiores
+            itaque suscipit nostrum? Qui assumenda aliquid delectus, quibusdam, nobis, ad laudantium omnis soluta
+            excepturi veniam cumque?
+            Fugiat suscipit perspiciatis minima commodi soluta eligendi quibusdam accusantium explicabo ut, animi
+            consequuntur magnam velit doloremque earum non sint nulla. In illo corporis assumenda autem, odio
+            consectetur inventore et hic.
+            Facilis nisi, est necessitatibus ut blanditiis voluptate incidunt doloribus, et quasi placeat totam quam
+            dicta voluptatem ea eos delectus harum illo culpa ipsam? Perspiciatis, magni non. Earum officia minus
+            nostrum.
+            Cumque nisi, reiciendis quos est, praesentium aperiam blanditiis suscipit laudantium, maxime labore corrupti
+            voluptatibus maiores? Numquam officiis autem consectetur praesentium, accusantium harum eligendi rerum
+            distinctio qui, aperiam quaerat aut nesciunt.
+            Quidem, expedita eos ipsam natus reiciendis consequuntur quia, ut tempora, necessitatibus nulla doloribus.
+            Ducimus nam quia, odit id eveniet error ut illum esse odio exercitationem quaerat dolor vel laudantium
+            perspiciatis?
+            Vel autem vero ipsum iure, sed ab quis eveniet commodi nam omnis, earum natus repellat. Voluptas saepe sunt
+            ducimus fuga quis a aut exercitationem! Expedita quibusdam pariatur est quidem aliquid?
+            Cum, cumque blanditiis quo impedit ipsam suscipit, rerum dolore iure voluptas ut quae sunt dignissimos
+            doloribus saepe quas! Consectetur labore quae aspernatur nobis non corporis totam illo commodi saepe et!
+            Rerum fuga quisquam consequatur dignissimos sint ullam harum ipsam blanditiis nostrum neque, vero eum,
+            doloremque et est dolores reiciendis deleniti. Veniam, eveniet iusto est aspernatur modi aperiam amet rerum
+            ea.
+            Velit laboriosam, vel voluptatem incidunt quia modi exercitationem dicta repudiandae, ab corrupti eum sunt
+            doloremque porro culpa tempore! Doloribus voluptatum nostrum perferendis enim rem natus velit. Neque eveniet
+            modi sequi.</p>
+    </div>
+</body>
+
+</html>
