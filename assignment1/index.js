@@ -4,6 +4,7 @@ const url = "https://fakestoreapi.com/products";
 const products = [];
 
 function getProductData(object) {
+    // products.length=0;
     for (key in object) {
         const product = {};
         product.image = object[key]['image'];
@@ -16,37 +17,28 @@ function getProductData(object) {
 
 
 function renderProductsContent(products) {
+    console.log(products.length)
     const div = document.getElementById("container");
-    for (let i = 0; i < products.length; i++) {
-        const innerDiv = document.createElement('div');
-        const image = document.createElement('img');
-        image.src = products[i].image;
-        image.className = "product-image";
-
-        const Price = document.createElement('h6');
-        const priceNode = document.createTextNode(`Price - ${products[i].price}`);
-        Price.appendChild(priceNode);
-        Price.className = "price-tag";
-
-        const rating = document.createElement('h6')
-        const ratingNode = document.createTextNode(`Rating - ${products[i].rating}`);
-        rating.appendChild(ratingNode);
-        rating.className = "rating-tag";
-
-        const name = document.createElement('h6');
-        const nameNode = document.createTextNode(products[i].name);
-        name.appendChild(nameNode);
-        name.className = "name-tag";
-
-        innerDiv.appendChild(image);
-        innerDiv.appendChild(name);
-        innerDiv.appendChild(Price);
-        innerDiv.appendChild(rating)
-        innerDiv.className = "inner-div";
-        div.appendChild(innerDiv);
+    if (products.length == 0) {
+        console.log(products.length)
+        div.innerHTML=`<h3>Sorry, No Data Available</h3>`;
+        return;
     }
+    let allProduct=``;
+    for (let i = 0; i < products.length; i++) {    
+        allProduct+=getProductBoxTemplate(products[i].image,products[i].name,products[i].price,products[i].rating);
+    }
+    div.innerHTML=allProduct;
 }
 
+function getProductBoxTemplate(image,name,price,rating){
+    return `<div class="product-box">
+    <img src="${image}" class="product-image">
+    <h6 class="name-tag">${name}</h6>    
+    <h6 class="price-tag">${price}</h6>
+    <h6 class="rating-tag">${rating}</h6>
+</div>`;
+}
 function removeProductContent() {
     const parent = document.getElementById("container");
     while (parent.firstChild) {
@@ -65,38 +57,60 @@ function buttonClickHandler(clickedButtonId) {
     }
 }
 
-document.getElementById("btn-price-L-H").addEventListener("click", function btnPriceLowToHigh() {
-    buttonClickHandler("btn-price-L-H");
-    products.sort((a, b) => (a.price > b.price ? 1 : -1));
+
+function onButtonClickSortingOrder(clickedButtonId) {
+    buttonClickHandler(clickedButtonId);
+    if(clickedButtonId==="btn-price-L-H"){
+        products.sort((a, b) => (a.price > b.price ? 1 : -1));
+    }else if(clickedButtonId==="btn-price-H-L"){
+        products.sort((a, b) => (a.price < b.price ? 1 : -1));
+    }else if(clickedButtonId==="btn-rating-L-H"){
+        products.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+    }else if(clickedButtonId==="btn-rating-H-L"){
+        products.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+    }
     removeProductContent();
     renderProductsContent(products);
+}
+
+document.getElementById("btn-price-L-H").addEventListener("click", function () {
+    onButtonClickSortingOrder("btn-price-L-H")
 });
-document.getElementById("btn-price-H-L").addEventListener("click", function btnPriceLHighToLow() {
-    buttonClickHandler("btn-price-H-L");
-    products.sort((a, b) => (a.price < b.price ? 1 : -1));
-    removeProductContent();
-    renderProductsContent(products);
+document.getElementById("btn-price-H-L").addEventListener("click", function () {
+    onButtonClickSortingOrder("btn-price-H-L")
 });
-document.getElementById("btn-rating-L-H").addEventListener("click", function btnRateLowToHigh() {
-    buttonClickHandler("btn-rating-L-H");
-    products.sort((a, b) => (a.rating > b.rating ? 1 : -1));
-    removeProductContent();
-    renderProductsContent(products);
+document.getElementById("btn-rating-L-H").addEventListener("click", function () {
+    onButtonClickSortingOrder("btn-rating-L-H")
 });
-document.getElementById("btn-rating-H-L").addEventListener("click", function btnRateHighToLow() {
-    buttonClickHandler("btn-rating-H-L");
-    products.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+document.getElementById("btn-rating-H-L").addEventListener("click", function () {
+    onButtonClickSortingOrder("btn-rating-H-L")
+});
+document.getElementById("search-button").addEventListener("click", function searchButtonClicked(event) {
+    event.preventDefault();
+    buttonClickHandler("search-button");
+    const form = document.getElementById("search-form");
+    const search = document.getElementById("search-input").value;
+    console.log(search)
+    const searchedProducts = products.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
     removeProductContent();
-    renderProductsContent(products);
+    renderProductsContent(searchedProducts);
+    form.reset();
 });
 
 function getMyStoreData() {
     fetch(url).then((response) => {
-        return response.json();
+        if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Something went wrong');
+          }
     }).then((object) => {
         getProductData(object);
+        getProductData(object);
         renderProductsContent(products);
-    })
+    }).catch((error) => {
+        console.log(error)
+      });
 }
 getMyStoreData();
 
@@ -106,7 +120,7 @@ getMyStoreData();
 /***************** Finish *********************************/
 
 
-
+/*
 
 // function getMyStoreData() {
 //     const products = callProductApi();
@@ -267,3 +281,53 @@ getMyStoreData();
 // }
 // getMyStoreData();
 
+        // const innerDiv = document.createElement('div');
+        // const image = document.createElement('img');
+        // image.src = products[i].image;
+        // image.className = "product-image";
+
+        // const Price = document.createElement('h6');
+        // const priceNode = document.createTextNode(`Price - ${products[i].price}`);
+        // Price.appendChild(priceNode);
+        // Price.className = "price-tag";
+
+        // const rating = document.createElement('h6')
+        // const ratingNode = document.createTextNode(`Rating - ${products[i].rating}`);
+        // rating.appendChild(ratingNode);
+        // rating.className = "rating-tag";
+
+        // const name = document.createElement('h6');
+        // const nameNode = document.createTextNode(products[i].name);
+        // name.appendChild(nameNode);
+        // name.className = "name-tag";
+
+        // innerDiv.appendChild(image);
+        // innerDiv.appendChild(name);
+        // innerDiv.appendChild(Price);
+        // innerDiv.appendChild(rating);
+        // innerDiv.className = "inner-div";
+        // div.appendChild(innerDiv);
+
+// document.getElementById("btn-price-L-H").addEventListener("click", function btnPriceLowToHigh() {
+//     buttonClickHandler("btn-price-L-H");
+//     products.sort((a, b) => (a.price > b.price ? 1 : -1));
+//     removeProductContent();
+//     renderProductsContent(products);
+// });
+// document.getElementById("btn-price-H-L").addEventListener("click", function btnPriceLHighToLow() {
+
+// });
+// document.getElementById("btn-rating-L-H").addEventListener("click", function btnRateLowToHigh() {
+//     buttonClickHandler("btn-rating-L-H");
+//     products.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+//     removeProductContent();
+//     renderProductsContent(products);
+// });
+// document.getElementById("btn-rating-H-L").addEventListener("click", function btnRateHighToLow() {
+//     buttonClickHandler("btn-rating-H-L");
+//     products.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+//     removeProductContent();
+//     renderProductsContent(products);
+// });
+
+*/

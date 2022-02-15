@@ -99,4 +99,26 @@ A “higher-order function” is a function that accepts functions as parameters
 
 */
 
+/*
+Difference between regular functions and arrow functions
+
+1.Unlike regular functions, arrow functions do not have their own this.
+2.Arguments objects are not available in arrow functions, but are available in regular functions.
+
+
+https://www.geeksforgeeks.org/difference-between-regular-functions-and-arrow-functions/
+
+let user = {
+	name: "GFG",
+	gfg1:() => {
+		console.log("hello " + this.name); // no 'this' binding here
+	},
+	gfg2(){	
+		console.log("Welcome to " + this.name); // 'this' binding works here
+	}
+};
+user.gfg1();
+user.gfg2();
+
+*/
 
