@@ -4,7 +4,7 @@ const url = "https://fakestoreapi.com/products";
 const products = [];
 
 function getProductData(object) {
-    // products.length=0;
+    products.length=0;
     for (key in object) {
         const product = {};
         product.image = object[key]['image'];
@@ -56,7 +56,6 @@ function buttonClickHandler(clickedButtonId) {
         }
     }
 }
-
 
 function onButtonClickSortingOrder(clickedButtonId) {
     buttonClickHandler(clickedButtonId);
