@@ -1,7 +1,8 @@
-import Expenses from "./Components/Expenses";
+import Expenses from "./Components/Expense/Expenses";
 import './App.css';
 import NewExpense from "./Components/NewExpense/NewExpense";
 import {useState} from 'react';
+import ExpenseChart from "./Components/Expense/ExpenseChart";
 
 const initialExpenses = [
   {
@@ -36,8 +37,9 @@ function App() {
   }
   return (
     <div>
-      <h2>Let's Do It</h2>
+      <h2 style={{textAlign:'center'}}>Expense-Keeper</h2>
       <NewExpense onNewExpenseDataSave={onNewExpenseDataSaveHandler}/>
+      
       <Expenses items={expenses}></Expenses>
     </div>
   );
