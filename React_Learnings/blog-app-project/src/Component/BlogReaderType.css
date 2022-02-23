@@ -1,0 +1,18 @@
+.blog-reader-type__controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
+  align-items: center;
+  align-content: center;
+}
+
+.blog-reader-type__control {
+  display: flex;
+  flex-direction: row;
+}
+
+.blog-reader-type__control input {
+  width: 1rem;
+  /* max-width: 100%; */
+}
