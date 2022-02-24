@@ -7,7 +7,7 @@ function NewBlog(props) {
             id: Math.ceil(Math.random()*100).toString()
         }
         props.onNewBlogDataSave(derivedBlogData);
-        console.log(derivedBlogData);
+        // console.log(derivedBlogData);
     }
 
     return (

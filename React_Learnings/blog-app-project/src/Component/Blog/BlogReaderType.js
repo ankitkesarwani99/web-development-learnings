@@ -2,16 +2,17 @@ import './BlogReaderType.css'
 import { useState } from 'react';
 const BlogReaderType=(props)=>{
 
-    const [readerType, setReaderType]=useState({
-        selectedReaderType:"Beginner"
-    });    
+    // const [readerType, setReaderType]=useState({
+    //     selectedReaderType:"Beginner"
+    // });    
 
     const handleReaderTypeChange=(event)=>{
-        setReaderType({
-            selectedReaderType:event.target.value
-        });
+        // setReaderType({
+        //     selectedReaderType:event.target.value
+        // });
+        // console.log(event.target.value);
+        props.onBlogReaderTypeSelection(event.target.value);
     }
-    console.log(readerType);
     return(
        
         <div className="blog-reader-type__controls">

@@ -13,46 +13,97 @@ const BlogThemeCheckBox=(props)=>{
     });
 
     const handleAdventureCheck=()=>{
-        setCheckedState(prevState => ({
-            ...prevState,
-            isAdventure:!prevState.isAdventure
-          }));
 
+        const updatedState={
+            ...checkedState,
+            isAdventure:!checkedState.isAdventure
+        }
+     
+        setCheckedState(updatedState);
+        props.onBlogThemeCheckBoxSelection(updatedState);
+        // console.log(updatedState)
+        // setCheckedState(prevState => ({
+        //     ...prevState,
+        //     isAdventure:!prevState.isAdventure
+        //   }));
+        
     }
     const handleComedyCheck=()=>{
-        setCheckedState(prevState => ({
-            ...prevState,
-            isComedy: !prevState.isComedy
-          }));
+        // setCheckedState(prevState => ({
+        //     ...prevState,
+        //     isComedy: !prevState.isComedy
+        //   }));
+        const updatedState={
+            ...checkedState,
+            isComedy:!checkedState.isComedy
+        }
+     
+        setCheckedState(updatedState);
+        props.onBlogThemeCheckBoxSelection(updatedState);
 
     }
     const handleThrillerCheck=()=>{
-        setCheckedState(prevState => ({
-            ...prevState,
-            isThriller: !prevState.isThriller
-          }));
+        // setCheckedState(prevState => ({
+        //     ...prevState,
+        //     isThriller: !prevState.isThriller
+        //   }));
+        //   props.onBlogThemeCheckBoxSelection(checkedState);
+        const updatedState={
+            ...checkedState,
+            isThriller:!checkedState.isThriller
+        }
+     
+        setCheckedState(updatedState);
+        props.onBlogThemeCheckBoxSelection(updatedState);
+
 
     }
     const handleRomanceCheck=()=>{
-        setCheckedState(prevState => ({
-            ...prevState,
-            isRomance: !prevState.isRomance
-          }));
+        // setCheckedState(prevState => ({
+        //     ...prevState,
+        //     isRomance: !prevState.isRomance
+        //   }));
+        //   props.onBlogThemeCheckBoxSelection(checkedState);
+        const updatedState={
+            ...checkedState,
+            isRomance:!checkedState.isRomance
+        }
+     
+        setCheckedState(updatedState);
+        props.onBlogThemeCheckBoxSelection(updatedState);
 
     }
     const handleScienceFictionCheck=()=>{
-        setCheckedState(prevState => ({
-            ...prevState,
-            isScienceFiction: !prevState.isScienceFiction,
-          }));
+        // setCheckedState(prevState => ({
+        //     ...prevState,
+        //     isScienceFiction: !prevState.isScienceFiction,
+        //   }));
+        //   props.onBlogThemeCheckBoxSelection(checkedState);
+        const updatedState={
+            ...checkedState,
+            isScienceFiction:!checkedState.isScienceFiction
+        }
+     
+        setCheckedState(updatedState);
+        props.onBlogThemeCheckBoxSelection(updatedState);
+
     }
     const handleMiscellaneousCheck=()=>{
-        setCheckedState(prevState => ({
-            ...prevState,
-            isMiscellaneous: !prevState.isMiscellaneous,
-          }));
+        // setCheckedState(prevState => ({
+        //     ...prevState,
+        //     isMiscellaneous: !prevState.isMiscellaneous,
+        //   }));
+        //   props.onBlogThemeCheckBoxSelection(checkedState);
+        const updatedState={
+            ...checkedState,
+            isMiscellaneous:!checkedState.isMiscellaneous
+        }
+     
+        setCheckedState(updatedState);
+        props.onBlogThemeCheckBoxSelection(updatedState);
+
     }
-    console.log(checkedState);
+    // console.log(checkedState);
 
     
     return(
