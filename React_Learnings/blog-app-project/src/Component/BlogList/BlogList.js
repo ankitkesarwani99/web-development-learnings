@@ -12,7 +12,9 @@ function BlogList(props){
                 (<BlogItem 
                     title={blog.title}
                     author={blog.author} 
-                    content={blog.content}>
+                    content={blog.content}
+                    selectedThemes={blog.selectedThemes}
+                    selectedReaderType={blog.selectedReaderType}>
                 </BlogItem>
                 ))
             }

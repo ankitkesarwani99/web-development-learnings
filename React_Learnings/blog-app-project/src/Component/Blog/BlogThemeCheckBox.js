@@ -3,22 +3,15 @@ import {useState} from 'react'
 
 const BlogThemeCheckBox=(props)=>{
 
-    const [checkedState, setCheckedState]=useState({
-        isAdventure:false,
-        isComedy:false,
-        isThriller:false,
-        isRomance:false,
-        isScienceFiction:false,
-        isMiscellaneous:false
-    });
+    const [checkedState, setCheckedState]=useState(props.themeCheckBoxes);
+
+    
 
     const handleAdventureCheck=()=>{
-
         const updatedState={
             ...checkedState,
             isAdventure:!checkedState.isAdventure
         }
-     
         setCheckedState(updatedState);
         props.onBlogThemeCheckBoxSelection(updatedState);
         // console.log(updatedState)
@@ -103,7 +96,7 @@ const BlogThemeCheckBox=(props)=>{
         props.onBlogThemeCheckBoxSelection(updatedState);
 
     }
-    // console.log(checkedState);
+    
 
     
     return(

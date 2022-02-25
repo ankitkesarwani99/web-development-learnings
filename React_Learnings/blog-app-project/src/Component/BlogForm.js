@@ -5,14 +5,28 @@ import BlogReaderType from './Blog/BlogReaderType';
 import BlogImage from './Blog/BlogImage';
 import BloggerFilter from './Blog/BloggerFilter';
 
+const blogThemeCheckBox={
+    isAdventure:false,
+    isComedy:false,
+    isThriller:false,
+    isRomance:false,
+    isScienceFiction:false,
+    isMiscellaneous:false
+};
+
+const blogReaderType={
+    selectedReaderType:"Beginner"
+};
+
+
 function BlogForm(props) {
 
     const [enteredTitle,setEnteredTitle]=useState('');
     const [enteredBlogger,setEnteredBlogger]=useState('Ankit');
     const [enteredContent,setEnteredContent]=useState('');
-    const [selectedThemeCheckBoxes,setSelectedThemeCheckBoxes]=useState({});
-    const [selectedReaderType,setSelectedReaderType]=useState('');
-
+    const [selectedThemeCheckBoxes,setSelectedThemeCheckBoxes]=useState(blogThemeCheckBox);
+    const [selectedReaderType,setSelectedReaderType]=useState(blogReaderType);
+    
 
     const titleChangeHandler=(event)=>{
         setEnteredTitle(event.target.value);
@@ -27,9 +41,8 @@ function BlogForm(props) {
         setSelectedThemeCheckBoxes(selectedCheckBoxes);
     }
 
-    const blogReaderTypeHandler=(selectedReaderType)=>{
-        setSelectedReaderType(selectedReaderType);
-        // console.log(selectedReaderType);
+    const blogReaderTypeHandler=(selectedReader)=>{
+        setSelectedReaderType(selectedReader);
     }
 
 
@@ -51,7 +64,6 @@ function BlogForm(props) {
         // setEnteredContent('');
     }
     return (
-       
             <form onSubmit={formSubmitHandler}>
                 <div className="new-expense__controls">
                     <div className="new-expense__control">
@@ -71,11 +83,11 @@ function BlogForm(props) {
                     </div>
 
                     <div className="new-expense__control">
-                        <BlogThemeCheckBox onBlogThemeCheckBoxSelection={blogThemeCheckBoxHandler}/>
+                        <BlogThemeCheckBox themeCheckBoxes={selectedThemeCheckBoxes} onBlogThemeCheckBoxSelection={blogThemeCheckBoxHandler}/>
                     </div>
 
                     <div className="new-expense__control">
-                        <BlogReaderType onBlogReaderTypeSelection={blogReaderTypeHandler}/>
+                        <BlogReaderType blogReaderType={selectedReaderType} onBlogReaderTypeSelection={blogReaderTypeHandler}/>
                     </div>
                     
                     <div className="new-expense__control">
