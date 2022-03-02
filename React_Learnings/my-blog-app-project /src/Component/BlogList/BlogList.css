@@ -1,0 +1,20 @@
+.blog-list {
+  list-style: none;
+  padding: 0px;
+  margin-right: auto;
+  max-width: 800px;
+  margin-left: auto;
+}
+
+.blog-list__fallback {
+  text-align: center;
+  color: rgb(255, 51, 0);
+  border-top: solid 3px brown;
+  padding: 2rem;
+}
+
+#available-post-tag {
+  border-top: solid 3px brown;
+  text-align: center;
+  padding: 2rem;
+}

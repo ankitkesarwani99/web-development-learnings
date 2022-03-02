@@ -1,0 +1,4 @@
+.blog-image__control {
+  display: flex;
+  flex-direction: row;
+}
