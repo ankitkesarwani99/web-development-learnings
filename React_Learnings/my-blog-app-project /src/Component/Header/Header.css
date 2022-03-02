@@ -1,0 +1,18 @@
+.header {
+  position: fixed;
+  top: 0;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background: #b4c3c1;
+  padding: 0 2rem;
+  max-width: 100%;
+  border-bottom: solid 3px brown;
+}
+
+.header h1 {
+  color: rgb(10, 9, 9);
+}

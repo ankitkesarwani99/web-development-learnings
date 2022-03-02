@@ -1,0 +1,16 @@
+.blog-theme-checkbox__controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+}
+
+.blog-theme-checkbox__control {
+  display: flex;
+  flex-direction: row;
+}
+
+.blog-theme-checkbox__control input {
+  width: 1rem !important;
+}

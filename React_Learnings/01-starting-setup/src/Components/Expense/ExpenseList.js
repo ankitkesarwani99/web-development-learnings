@@ -1,0 +1,37 @@
+import './ExpenseList.css'
+import ExpenseItem from "./ExpenseItem";
+
+function ExpenseList(props){
+    if(props.items.length===0){
+        return <h2 className="expenses-list__fallback">No Expense Found</h2>
+    }
+
+    return (
+        <ul className="expenses-list">
+            {
+            props.items.map(expense =>
+                (<ExpenseItem 
+                    title={expense.title}
+                    amount={expense.amount} 
+                    date={expense.date}>
+                </ExpenseItem>
+                ))
+            }
+        </ul>
+    );
+
+}
+
+export default ExpenseList;
+
+/* {
+                        filterExpenseList.length===0
+                        ? <p> No Expense Record Available.</p>
+                        :filterExpenseList.map(expense =>
+                            (<ExpenseItem 
+                                title={expense.title}
+                                amount={expense.amount} 
+                                date={expense.date}>
+                            </ExpenseItem>
+                            ))
+} */
