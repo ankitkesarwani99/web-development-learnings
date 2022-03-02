@@ -1,0 +1,14 @@
+.blog-reaction-buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem;
+}
+.blog-reaction-button {
+  margin: 0.2rem;
+  font-size: large;
+  font-weight: bold;
+  border-style: none;
+  background-color: rgb(156, 175, 214);
+  border-radius: 2rem;
+  padding: 1rem;
+}

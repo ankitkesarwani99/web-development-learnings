@@ -1,141 +1,114 @@
-import './BlogThemeCheckBox.css'
-import {useState} from 'react'
+import "./BlogThemeCheckBox.css";
 
-const BlogThemeCheckBox=(props)=>{
-
-    const [checkedState, setCheckedState]=useState(props.themeCheckBoxes);
-
-    
-
-    const handleAdventureCheck=()=>{
-        const updatedState={
-            ...checkedState,
-            isAdventure:!checkedState.isAdventure
-        }
-        setCheckedState(updatedState);
-        props.onBlogThemeCheckBoxSelection(updatedState);
-        // console.log(updatedState)
-        // setCheckedState(prevState => ({
-        //     ...prevState,
-        //     isAdventure:!prevState.isAdventure
-        //   }));
-        
+const BlogThemeCheckBox = (props) => {
+  const handleCheck = (event) => {
+    let updatedState = {};
+    if (event.target.value === "Adventure") {
+      updatedState = {
+        ...props.themeCheckBoxes,
+        Adventure: event.target.checked,
+      };
+    } else if (event.target.value === "Comedy") {
+      updatedState = {
+        ...props.themeCheckBoxes,
+        Comedy: event.target.checked,
+      };
+    } else if (event.target.value === "Thriller") {
+      updatedState = {
+        ...props.themeCheckBoxes,
+        Thriller: event.target.checked,
+      };
+    } else if (event.target.value === "Romance") {
+      updatedState = {
+        ...props.themeCheckBoxes,
+        Romance: event.target.checked,
+      };
+    } else if (event.target.value === "ScienceFiction") {
+      updatedState = {
+        ...props.themeCheckBoxes,
+        ScienceFiction: event.target.checked,
+      };
+    } else if (event.target.value === "Miscellaneous") {
+      updatedState = {
+        ...props.themeCheckBoxes,
+        Miscellaneous: event.target.checked,
+      };
     }
-    const handleComedyCheck=()=>{
-        // setCheckedState(prevState => ({
-        //     ...prevState,
-        //     isComedy: !prevState.isComedy
-        //   }));
-        const updatedState={
-            ...checkedState,
-            isComedy:!checkedState.isComedy
-        }
-     
-        setCheckedState(updatedState);
-        props.onBlogThemeCheckBoxSelection(updatedState);
+    props.onBlogThemeCheckBoxSelection(updatedState);
+  };
 
-    }
-    const handleThrillerCheck=()=>{
-        // setCheckedState(prevState => ({
-        //     ...prevState,
-        //     isThriller: !prevState.isThriller
-        //   }));
-        //   props.onBlogThemeCheckBoxSelection(checkedState);
-        const updatedState={
-            ...checkedState,
-            isThriller:!checkedState.isThriller
-        }
-     
-        setCheckedState(updatedState);
-        props.onBlogThemeCheckBoxSelection(updatedState);
-
-
-    }
-    const handleRomanceCheck=()=>{
-        // setCheckedState(prevState => ({
-        //     ...prevState,
-        //     isRomance: !prevState.isRomance
-        //   }));
-        //   props.onBlogThemeCheckBoxSelection(checkedState);
-        const updatedState={
-            ...checkedState,
-            isRomance:!checkedState.isRomance
-        }
-     
-        setCheckedState(updatedState);
-        props.onBlogThemeCheckBoxSelection(updatedState);
-
-    }
-    const handleScienceFictionCheck=()=>{
-        // setCheckedState(prevState => ({
-        //     ...prevState,
-        //     isScienceFiction: !prevState.isScienceFiction,
-        //   }));
-        //   props.onBlogThemeCheckBoxSelection(checkedState);
-        const updatedState={
-            ...checkedState,
-            isScienceFiction:!checkedState.isScienceFiction
-        }
-     
-        setCheckedState(updatedState);
-        props.onBlogThemeCheckBoxSelection(updatedState);
-
-    }
-    const handleMiscellaneousCheck=()=>{
-        // setCheckedState(prevState => ({
-        //     ...prevState,
-        //     isMiscellaneous: !prevState.isMiscellaneous,
-        //   }));
-        //   props.onBlogThemeCheckBoxSelection(checkedState);
-        const updatedState={
-            ...checkedState,
-            isMiscellaneous:!checkedState.isMiscellaneous
-        }
-     
-        setCheckedState(updatedState);
-        props.onBlogThemeCheckBoxSelection(updatedState);
-
-    }
-    
-
-    
-    return(
-       
-        <div className="blog-theme-checkbox__controls">
-            {/* <div>
-                <p>Select Your Themes</p>   
-            </div> */}
-            <div className='blog-theme-checkbox__control'>
-                <input type="checkbox" id="Adventure" name="Adventure" 
-                checked={checkedState.isAdventure} onChange={handleAdventureCheck}/>
-                <label htmlFor="Adventure">Adventure</label>
-            </div>
-            <div className='blog-theme-checkbox__control'>
-                <input type="checkbox" id="Comedy" name="Comedy" value="Comedy"
-                checked={checkedState.isComedy} onChange={handleComedyCheck}/>
-                <label htmlFor="Comedy">Comedy</label>
-            </div>
-            <div className='blog-theme-checkbox__control'>
-                <input type="checkbox" id="Thriller" name="Thriller" value="Thriller"
-                checked={checkedState.isThriller} onChange={handleThrillerCheck}/>
-                <label htmlFor="Thriller">Thriller</label>
-            </div>
-            <div className='blog-theme-checkbox__control'>
-                <input type="checkbox" id="Romance"name="Romance" value="Romance"
-                checked={checkedState.isRomance} onChange={handleRomanceCheck}/>
-                <label htmlFor="Romance">Romance</label>
-            </div>
-            <div className='blog-theme-checkbox__control'>
-                <input type="checkbox" id="Science Fiction" name="Science Fiction" value="ScienceFiction"
-                checked={checkedState.isScienceFiction} onChange={handleScienceFictionCheck}/>
-                <label htmlFor="Science Fiction">Science-Fiction</label>
-            </div>
-            <div className='blog-theme-checkbox__control'>
-                <input type="checkbox" id="Miscellaneous" name="Miscellaneous" value="Miscellaneous"
-                checked={checkedState.isMiscellaneous} onChange={handleMiscellaneousCheck}/>
-                <label htmlFor="Miscellaneous">Miscellaneous</label>
-            </div>
+  return (
+    <>
+      <label style={{ textAlign: "center" }}>Select Blog Themes</label>
+      <div className="blog-theme-checkbox__controls">
+        <div className="blog-theme-checkbox__control">
+          <input
+            type="checkbox"
+            id="Adventure"
+            name="Adventure"
+            value="Adventure"
+            checked={props.themeCheckBoxes.Adventure}
+            onChange={handleCheck}
+          />
+          <label htmlFor="Adventure">Adventure</label>
         </div>
-    );
-}
+        <div className="blog-theme-checkbox__control">
+          <input
+            type="checkbox"
+            id="Comedy"
+            name="Comedy"
+            value="Comedy"
+            checked={props.themeCheckBoxes.Comedy}
+            onChange={handleCheck}
+          />
+          <label htmlFor="Comedy">Comedy</label>
+        </div>
+        <div className="blog-theme-checkbox__control">
+          <input
+            type="checkbox"
+            id="Thriller"
+            name="Thriller"
+            value="Thriller"
+            checked={props.themeCheckBoxes.Thriller}
+            onChange={handleCheck}
+          />
+          <label htmlFor="Thriller">Thriller</label>
+        </div>
+        <div className="blog-theme-checkbox__control">
+          <input
+            type="checkbox"
+            id="Romance"
+            name="Romance"
+            value="Romance"
+            checked={props.themeCheckBoxes.Romance}
+            onChange={handleCheck}
+          />
+          <label htmlFor="Romance">Romance</label>
+        </div>
+        <div className="blog-theme-checkbox__control">
+          <input
+            type="checkbox"
+            id="Science Fiction"
+            name="Science Fiction"
+            value="ScienceFiction"
+            checked={props.themeCheckBoxes.ScienceFiction}
+            onChange={handleCheck}
+          />
+          <label htmlFor="Science Fiction">Science-Fiction</label>
+        </div>
+        <div className="blog-theme-checkbox__control">
+          <input
+            type="checkbox"
+            id="Miscellaneous"
+            name="Miscellaneous"
+            value="Miscellaneous"
+            checked={props.themeCheckBoxes.Miscellaneous}
+            onChange={handleCheck}
+          />
+          <label htmlFor="Miscellaneous">Miscellaneous</label>
+        </div>
+      </div>
+    </>
+  );
+};
 export default BlogThemeCheckBox;

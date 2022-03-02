@@ -1,26 +1,23 @@
-import './BlogList.css'
-import BlogItem from './BlogItem';
-function BlogList(props){
-    if(props.items.length===0){
-        return <h2 className="expenses-list__fallback">No Expense Found</h2>
-    }
+import "./BlogList.css";
+import BlogItem from "./BlogItem";
+import { useContext } from "react";
+import BlogContext from "../../Store/blog-context";
+function BlogList(props) {
+  const blogCtx = useContext(BlogContext);
 
-    return (
-        <ul className="expenses-list">
-            {
-            props.items.map(blog =>
-                (<BlogItem 
-                    title={blog.title}
-                    author={blog.author} 
-                    content={blog.content}
-                    selectedThemes={blog.selectedThemes}
-                    selectedReaderType={blog.selectedReaderType}>
-                </BlogItem>
-                ))
-            }
-        </ul>
-    );
-
+  if (blogCtx.items.length === 0) {
+    return <h2 className="blog-list__fallback">Sorry! No Post Available</h2>;
+  }
+  return (
+    <>
+      <h3 id="available-post-tag">Available Posts</h3>
+      <ul className="blog-list">
+        {blogCtx.items.map((blog) => (
+          <BlogItem blog={blog}></BlogItem>
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default BlogList;

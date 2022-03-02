@@ -35,8 +35,8 @@ window is global object in js, which is equal to this keyword.
 //     var y=8;
 // }
 // console.log(x); 7
-// console.log(y); error 
-// console.log(window.x);  7 
+// console.log(y); error
+// console.log(window.x);  7
 // console.log(this.x) 7
 
 /*
@@ -98,7 +98,6 @@ Q) What is need of a block/Grouping?
 
 /*********************** */
 
-
 // var a = 1;
 
 // {
@@ -111,11 +110,10 @@ Q) What is need of a block/Grouping?
 // }
 
 // console.log(a);//10 because a is in global scope
-// console.log(b);//error 
+// console.log(b);//error
 // console.log(c);//error
 
 /*********************** */
-
 
 // let b = 1;
 // {
@@ -130,9 +128,7 @@ Q) What is need of a block/Grouping?
 // console.log(a);//10 because a is in global scope
 // console.log(b);//1 because let are block scoped
 
-
 /*********************** */
-
 
 // const c = 1;
 // {
@@ -144,7 +140,7 @@ Q) What is need of a block/Grouping?
 //     console.log(c);//30
 // }
 
-// console.log(a);//10 because a is in global scope 
+// console.log(a);//10 because a is in global scope
 // console.log(c);// 1
 
 /* Since let and const follow block scope, 
@@ -193,8 +189,6 @@ q->`let` goes to different memory called "script" and var goes to "Global". Why 
 // function x(){
 //  var a =20;//no-error
 // }
-
-
 
 // function func() {
 //     var a = 'Geeks';
@@ -255,17 +249,16 @@ we can return ,pass as argument and assign a function.
 // x();//output-> 6 6 6 6 6 // because it referece to i not to its value.
 
 function y() {
-    for (let i = 1; i <= 5; i++) {
-        setTimeout(function y() {
-            console.log(i)
-        },
-            i * 1000);
-    }
+  for (let i = 1; i <= 5; i++) {
+    setTimeout(function y() {
+      console.log(i);
+    }, i * 1000);
+  }
 }
-y();//output-> 1 2 3 4 5 --> since i is in block scope, and in each iteration we will have new copy of i.
+y(); //output-> 1 2 3 4 5 --> since i is in block scope, and in each iteration we will have new copy of i.
 
 // function z() {
-   
+
 //     for (var i = 1; i <= 5; i++) {
 //         function close(x){
 //         setTimeout(function y() {
@@ -276,4 +269,4 @@ y();//output-> 1 2 3 4 5 --> since i is in block scope, and in each iteration we
 //     close(i);
 //     }
 // }
-// z();//output-> 1 2 3 4 5 
+// z();//output-> 1 2 3 4 5

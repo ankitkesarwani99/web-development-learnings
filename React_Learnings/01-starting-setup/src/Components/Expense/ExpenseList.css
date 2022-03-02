@@ -1,6 +1,9 @@
 .expenses-list {
   list-style: none;
-  padding: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
 }
 
 .expenses-list__fallback {

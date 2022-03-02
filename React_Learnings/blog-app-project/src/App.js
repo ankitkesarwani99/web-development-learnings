@@ -1,26 +1,35 @@
-import React,{Fragment,useState} from 'react';
-import Header from './Component/Header/Header';
-import NewBlog from './Component/NewBlog';
-import AddPostTag from './Component/AddPostTag';
-import BlogList from './Component/BlogList/BlogList';
-const initialBlogs=[];
+import React, { Fragment, useState } from "react";
+import Header from "./Component/Header/Header";
+import NewBlog from "./Component/Blog/NewBlog";
+import BlogList from "./Component/BlogList/BlogList";
+import BlogProvider from "./Store/BlogProvider";
+import SingleBlogPage from "./Component/SingleBlog/SingleBlogPage";
+import EditBlogPage from "./Component/EditBlog/EditBlogPage";
+import ErrorPage from "./Component/Error/ErrorPage";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 function App() {
-
-  const[blogs,setBlogs]=useState(initialBlogs);
-  const onNewBlogDataSaveHandler=(newBlogData)=>{
-    // console.log(initialExpenses)
-    const updatedBlogs=[newBlogData,...blogs];
-    setBlogs(updatedBlogs);
-    console.log(updatedBlogs);
-  }
-  
   return (
-    <Fragment>
-      <Header/>
-      <AddPostTag/>
-      <NewBlog onNewBlogDataSave={onNewBlogDataSaveHandler}></NewBlog>
-      <BlogList items={blogs}></BlogList>
-    </Fragment>
+    <Router>
+      <BlogProvider>
+        <Header />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <NewBlog />
+                <BlogList />
+              </>
+            }
+          />
+          {/* <Route exact path="/posts" element={<BlogList/>}/>  */}
+          <Route exact path="/post/:id" element={<SingleBlogPage />} />
+          <Route exact path="/editPost/:id" element={<EditBlogPage />} />
+          <Route path="/*" element={<ErrorPage />} />
+        </Routes>
+      </BlogProvider>
+    </Router>
   );
 }
 
